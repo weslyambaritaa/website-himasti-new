@@ -7,7 +7,7 @@ async function seedDB(): Promise<void> {
     console.log("Sedang melakukan penyemaian data...");
 
     // Tambahkan logika penyemaian data di sini
-    const user_id = "32035507-89b7-448e-96a0-af576139a1f6";
+    const user_id = "kilijum";
     await HakAksesModel.destroy({ where: { user_id: user_id } });
     await HakAksesModel.create({
       id: user_id,
