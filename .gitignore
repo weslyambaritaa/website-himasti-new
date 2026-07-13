@@ -1,0 +1,107 @@
+# Environment files di semua folder
+
+.env
+**/.env
+.env.*
+**/.env.*
+
+# Tetap izinkan file contoh environment
+
+!.env.example
+!**/.env.example
+
+# Dependencies
+
+node_modules/
+**/node_modules/
+vendor/
+**/vendor/
+
+# Build results
+
+dist/
+**/dist/
+build/
+**/build/
+public/build/
+**/public/build/
+
+# Laravel cache dan runtime
+
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*.php
+
+# Pertahankan struktur folder Laravel
+
+!storage/logs/.gitignore
+!storage/framework/cache/.gitignore
+!storage/framework/sessions/.gitignore
+!storage/framework/views/.gitignore
+
+# Testing dan coverage
+
+coverage/
+**/coverage/
+.phpunit.result.cache
+
+# IDE
+
+.vscode/
+.idea/
+*.code-workspace
+
+# Operating system
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temporary files
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Local database
+
+*.sqlite
+*.sqlite3
+
+# Package manager cache
+
+.npm/
+.yarn/cache/
+.pnpm-store/
+
+# TypeScript dan Vite
+
+*.tsbuildinfo
+.vite/
+**/.vite/
+
+# Secrets dan private keys
+
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+auth.json
+
+# Local Docker overrides
+
+docker-compose.override.yml
+compose.override.yml
