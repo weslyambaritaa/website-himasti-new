@@ -1,0 +1,39 @@
+# Git / IDE
+.git
+.gitignore
+.gitattributes
+.idea
+.vscode
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Local dependencies and generated frontend assets
+node_modules
+vendor
+public/build
+public/hot
+
+# Runtime-generated files
+bootstrap/cache/*.php
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/app/public/*
+!storage/app/public/.gitignore
+public/storage
+
+# Local databases, reports, and temporary files
+database/*.sqlite
+coverage
+.phpunit.cache
+.phpunit.result.cache
+*.log
+*.tmp
+
+# Tests and local-only documentation are not needed in production image
+tests
+README.md
