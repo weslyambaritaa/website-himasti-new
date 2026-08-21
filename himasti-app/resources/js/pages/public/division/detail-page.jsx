@@ -46,8 +46,8 @@ export default function DivisionDetailPage() {
                                 {division.members.length ? (
                                     <div className="grid gap-4 md:grid-cols-2">
                                         {division.members.map((member) => (
-                                            <div key={member.id} className="border-t border-slate-200 pt-4">
-                                                <p className="font-editorial text-3xl leading-none text-[#1c2032]">
+                                            <div key={member.id} className="group border-t-2 border-line pt-4 transition duration-300 hover:border-volt">
+                                                <p className="font-editorial text-3xl leading-none text-ink transition duration-300 group-hover:text-volt-deep">
                                                     {member.name}
                                                 </p>
                                                 <p className="mt-2 text-sm text-slate-600">
@@ -67,7 +67,7 @@ export default function DivisionDetailPage() {
                     </div>
 
                     <div className="space-y-8">
-                        <h2 className="font-editorial text-4xl font-semibold text-black" data-reveal>
+                        <h2 className="font-editorial text-4xl font-semibold text-ink" data-reveal>
                             Program Kerja
                         </h2>
                         {division.work_programs.length ? (
@@ -96,7 +96,7 @@ export default function DivisionDetailPage() {
 
                     {division.work_programs.some((item) => item.documentations?.length) ? (
                         <div className="space-y-8">
-                            <h2 className="font-editorial text-4xl font-semibold text-black" data-reveal>
+                            <h2 className="font-editorial text-4xl font-semibold text-ink" data-reveal>
                                 Dokumentasi Terkait
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">

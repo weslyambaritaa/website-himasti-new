@@ -17,8 +17,13 @@ export default function SectionHeading({
             )}
             data-reveal
         >
-            {kicker ? <p className="public-kicker">{kicker}</p> : null}
-            <h2 className={cn("font-editorial text-4xl leading-none font-semibold text-black md:text-6xl", titleClassName)}>
+            {kicker ? (
+                <div className={cn("flex flex-col gap-3", align === "center" ? "items-center" : "items-start")}>
+                    <span className="accent-rule" aria-hidden="true" />
+                    <p className="public-kicker">{kicker}</p>
+                </div>
+            ) : null}
+            <h2 className={cn("font-editorial text-4xl leading-none font-semibold text-ink md:text-6xl", titleClassName)}>
                 {title}
             </h2>
             {description ? (

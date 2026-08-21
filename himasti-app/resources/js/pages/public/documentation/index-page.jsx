@@ -38,21 +38,21 @@ export default function DocumentationIndexPage() {
                                         <Link
                                             key={item.id}
                                             href={route("public.documentation.show", item.slug)}
-                                            className={`group block focus-visible:ring-2 focus-visible:ring-[#1c2032] focus-visible:ring-offset-2 focus-visible:outline-none ${index === 0 ? "md:col-span-2" : ""}`}
+                                            className={`group hover-lift block focus-visible:ring-2 focus-visible:ring-volt focus-visible:ring-offset-2 focus-visible:outline-none ${index === 0 ? "md:col-span-2" : ""}`}
                                             data-reveal
                                         >
                                             <ImageFallback
                                                 src={coverImage}
                                                 alt={item.title}
-                                                className="overflow-hidden bg-slate-100"
-                                                imgClassName={`w-full object-cover transition duration-500 group-hover:scale-[1.02] ${index === 0 ? "aspect-[16/9]" : "aspect-[4/5]"}`}
+                                                className="overflow-hidden bg-mist-deep"
+                                                imgClassName={`w-full object-cover transition duration-700 ease-out group-hover:scale-105 ${index === 0 ? "aspect-[16/9]" : "aspect-[4/5]"}`}
                                                 fallbackLabel={item.title}
                                             />
                                             <div className="space-y-2 px-1 pt-4">
                                                 <p className="public-kicker">
                                                     {[item.event_date ? dateFormatter.format(new Date(item.event_date)) : null, item.location].filter(Boolean).join(" · ")}
                                                 </p>
-                                                <h2 className="font-editorial text-3xl leading-tight font-semibold text-[#1c2032]">
+                                                <h2 className="font-editorial text-3xl leading-tight font-semibold text-ink transition duration-300 group-hover:text-volt-deep">
                                                     {item.title}
                                                 </h2>
                                             </div>

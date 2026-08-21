@@ -38,7 +38,7 @@ export default function NewsDetailPage() {
                         />
                         <article className="space-y-6" data-reveal>
                             {newsItem.excerpt ? (
-                                <p className="font-editorial text-3xl leading-tight text-[#1c2032] md:text-4xl">
+                                <p className="font-editorial text-3xl leading-tight text-ink md:text-4xl">
                                     {newsItem.excerpt}
                                 </p>
                             ) : null}
@@ -50,7 +50,7 @@ export default function NewsDetailPage() {
 
                     {relatedItems.length ? (
                         <div className="space-y-8">
-                            <h2 className="font-editorial text-4xl font-semibold text-black" data-reveal>
+                            <h2 className="font-editorial text-4xl font-semibold text-ink" data-reveal>
                                 Berita Terkait
                             </h2>
                             <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">

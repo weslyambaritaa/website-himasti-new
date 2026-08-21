@@ -24,12 +24,16 @@ export default function ServiceIndexPage() {
                                     href={service.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group border border-slate-200 p-6 transition hover:border-[#1c2032] focus-visible:ring-2 focus-visible:ring-[#1c2032] focus-visible:ring-offset-2 focus-visible:outline-none"
+                                    className="group hover-lift relative overflow-hidden border border-line bg-white p-6 transition hover:border-volt focus-visible:ring-2 focus-visible:ring-volt focus-visible:ring-offset-2 focus-visible:outline-none"
                                     data-reveal
                                 >
+                                    <span
+                                        aria-hidden="true"
+                                        className="pointer-events-none absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-linear-to-r from-volt via-aqua to-flare transition-transform duration-500 ease-out group-hover:scale-x-100"
+                                    />
                                     <div className="flex items-start justify-between gap-4">
                                         <div>
-                                            <p className="font-editorial text-3xl font-semibold text-[#1c2032]">
+                                            <p className="font-editorial text-3xl font-semibold text-ink transition duration-300 group-hover:text-volt-deep">
                                                 {service.name}
                                             </p>
                                             {service.description ? (
@@ -38,7 +42,7 @@ export default function ServiceIndexPage() {
                                                 </p>
                                             ) : null}
                                         </div>
-                                        <ExternalLink className="size-4 shrink-0 text-slate-400 transition group-hover:text-[#1c2032]" />
+                                        <ExternalLink className="size-4 shrink-0 text-ink-muted transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-volt" />
                                     </div>
                                 </a>
                             ))}
