@@ -117,7 +117,6 @@ export default function PublicFooter() {
             <div className="border-t border-white/10">
                 <div className="public-container flex flex-col gap-2 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
                     <p>{copyrightText}</p>
-                    <p>Website resmi organisasi mahasiswa Informatika.</p>
                 </div>
             </div>
         </footer>
