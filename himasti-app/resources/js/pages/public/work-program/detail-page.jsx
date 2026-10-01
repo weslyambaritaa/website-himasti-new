@@ -65,7 +65,7 @@ export default function PublicWorkProgramDetailPage() {
                     </div>
 
                     <div className="space-y-8">
-                        <h2 className="font-editorial text-4xl font-semibold text-black" data-reveal>
+                        <h2 className="font-editorial text-4xl font-semibold text-ink" data-reveal>
                             Dokumentasi Terkait
                         </h2>
                         {workProgram.documentations.length ? (

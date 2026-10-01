@@ -25,15 +25,16 @@ function NavLink({ href, active, children, inverted = false, onClick }) {
         <Link
             href={href}
             onClick={onClick}
+            data-active={active ? "true" : "false"}
             className={cn(
-                "text-sm font-medium transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
+                "link-underline text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
                 inverted
                     ? active
                         ? "text-white"
                         : "text-white/80 hover:text-white"
                     : active
-                      ? "text-[#1c2032]"
-                      : "text-slate-600 hover:text-[#1c2032]"
+                      ? "text-ink"
+                      : "text-ink-muted hover:text-ink"
             )}
         >
             {children}
@@ -61,18 +62,18 @@ export default function PublicNavbar({ overlay = false }) {
     const navClassName = useMemo(
         () => cn(
             "fixed inset-x-0 top-0 z-50 transition duration-300",
-            isOverlay ? "bg-transparent" : "border-b border-slate-200 bg-white/96 backdrop-blur"
+            isOverlay ? "bg-transparent" : "border-b border-line bg-white/95 shadow-[0_1px_0_0_rgba(10,26,60,0.06)] backdrop-blur"
         ),
         [isOverlay]
     );
 
-    const brandTextClass = isOverlay ? "text-white" : "text-[#1c2032]";
+    const brandTextClass = isOverlay ? "text-white" : "text-ink";
 
     return (
         <nav aria-label="Navigasi publik" className={navClassName}>
             <div className="public-container flex h-20 items-center justify-between gap-6">
                 <Link href={route("public.home")} className="min-w-0 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none">
-                    <div className={cn("font-editorial text-3xl font-semibold leading-none", brandTextClass)}>
+                    <div className={cn("min-w-0 truncate font-editorial text-2xl font-semibold leading-none transition md:text-3xl", brandTextClass)}>
                         {publicIdentity?.site_title ?? "HIMASTI"}
                     </div>
                 </Link>
@@ -91,17 +92,17 @@ export default function PublicNavbar({ overlay = false }) {
 
                     <DropdownMenu>
                         <DropdownMenuTrigger className={cn(
-                            "inline-flex items-center gap-2 text-sm font-medium transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
-                            isOverlay ? "text-white/80 hover:text-white" : "text-slate-600 hover:text-[#1c2032]"
+                            "link-underline group inline-flex items-center gap-2 text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
+                            isOverlay ? "text-white/80 hover:text-white" : "text-ink-muted hover:text-ink"
                         )}>
                             Divisi
-                            <ChevronDown className="size-4" />
+                            <ChevronDown className="size-4 transition duration-300 group-data-[state=open]:rotate-180" />
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="center" className="w-64 rounded-sm border-slate-200 p-2">
+                        <DropdownMenuContent align="center" className="w-64 rounded-sm border-line p-2">
                             {divisionItems.map((item) => (
                                 item.href ? (
                                     <DropdownMenuItem key={item.label} asChild>
-                                        <Link href={item.href} className="cursor-pointer rounded-sm px-3 py-2">
+                                        <Link href={item.href} className="cursor-pointer rounded-sm px-3 py-2 font-medium transition focus:bg-mist focus:text-volt-deep">
                                             {item.label}
                                         </Link>
                                     </DropdownMenuItem>
@@ -130,8 +131,8 @@ export default function PublicNavbar({ overlay = false }) {
                     {publicAuth?.canAccessAdmin ? (
                         <Button
                             asChild
-                            variant={isOverlay ? "secondary" : "outline"}
-                            className={cn(isOverlay ? "bg-white text-[#1c2032] hover:bg-white/90" : "border-slate-300")}
+                            variant={isOverlay ? "secondary" : "default"}
+                            className={cn(isOverlay ? "bg-white font-semibold text-ink hover:bg-white/90" : "btn-volt font-semibold")}
                         >
                             <Link href={route("home")}>Masuk Admin</Link>
                         </Button>
@@ -144,15 +145,15 @@ export default function PublicNavbar({ overlay = false }) {
                             type="button"
                             variant="ghost"
                             size="icon"
-                            className={cn(isOverlay ? "text-white hover:bg-white/10 hover:text-white" : "text-[#1c2032]")}
+                            className={cn(isOverlay ? "text-white hover:bg-white/10 hover:text-white" : "text-ink")}
                             aria-label="Buka menu"
                         >
                             <Menu className="size-5" />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm border-l-slate-200 bg-white">
-                        <SheetHeader className="border-b border-slate-200 pb-6">
-                            <SheetTitle className="font-editorial text-4xl text-[#1c2032]">
+                    <SheetContent side="right" className="w-full max-w-sm border-l-line bg-white">
+                        <SheetHeader className="border-b border-line pb-6">
+                            <SheetTitle className="font-editorial text-4xl text-ink">
                                 {publicIdentity?.site_title ?? "HIMASTI"}
                             </SheetTitle>
                         </SheetHeader>
@@ -178,7 +179,7 @@ export default function PublicNavbar({ overlay = false }) {
                                                 {item.label}
                                             </NavLink>
                                         ) : (
-                                            <span key={item.label} className="text-sm text-slate-400">
+                                            <span key={item.label} className="text-sm text-ink-muted/60">
                                                 {item.label}
                                             </span>
                                         )
@@ -186,7 +187,7 @@ export default function PublicNavbar({ overlay = false }) {
                                 </div>
                             </div>
                             {publicAuth?.canAccessAdmin ? (
-                                <Button asChild className="w-full bg-[#1c2032] text-white hover:bg-[#252b43]">
+                                <Button asChild className="btn-volt w-full font-semibold">
                                     <Link href={route("home")} onClick={() => setMobileOpen(false)}>
                                         Masuk Admin
                                     </Link>
@@ -196,6 +197,7 @@ export default function PublicNavbar({ overlay = false }) {
                     </SheetContent>
                 </Sheet>
             </div>
+            <div aria-hidden="true" className="scroll-progress h-0.5 w-full" />
         </nav>
     );
 }

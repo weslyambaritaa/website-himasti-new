@@ -83,7 +83,7 @@ export default function LandingPage() {
     return (
         <PublicLayout overlayNavbar mainClassName="overflow-x-hidden">
             <section
-                className="relative min-h-screen overflow-hidden bg-ink text-white"
+                className="relative min-h-screen overflow-hidden bg-aurora text-white"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
                 onFocusCapture={() => setIsPaused(true)}
@@ -95,35 +95,50 @@ export default function LandingPage() {
                         className={`absolute inset-0 transition-opacity duration-700 ${index === activeSlide ? "opacity-100" : "opacity-0"}`}
                         aria-hidden={index !== activeSlide}
                     >
-                        <ImageFallback
-                            src={slide.image ? `/storage/${slide.image}` : null}
-                            alt={slide.title || profileName}
-                            className="h-full w-full"
-                            imgClassName="h-full w-full object-cover"
-                            fallbackLabel={profileName}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/78" />
+                        {slide.image ? (
+                            <>
+                                <ImageFallback
+                                    src={`/storage/${slide.image}`}
+                                    alt={slide.title || profileName}
+                                    className="h-full w-full"
+                                    imgClassName="h-full w-full object-cover"
+                                    fallbackLabel={profileName}
+                                />
+                                <div className="absolute inset-0 bg-linear-to-b from-ink/72 via-ink-deep/78 to-ink-deep/95" />
+                                <div className="absolute inset-0 bg-linear-to-tr from-volt-deep/30 via-transparent to-aqua/15" />
+                            </>
+                        ) : null}
                     </div>
                 ))}
 
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -top-24 -left-24 size-[28rem] rounded-full bg-volt/25 blur-3xl animate-[float-soft_7s_ease-in-out_infinite]"
+                />
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -right-32 bottom-0 size-[32rem] rounded-full bg-aqua/15 blur-3xl animate-[float-soft_9s_ease-in-out_infinite_reverse]"
+                />
+
                 <div className="public-container relative flex min-h-screen flex-col justify-end pb-20 pt-28 md:pb-24">
                     <div className="max-w-4xl space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]" data-reveal>
-                        <p className="public-kicker text-white/90">Himpunan Mahasiswa Informatika</p>
-                        <h1 className="font-editorial text-6xl leading-[0.92] font-semibold text-white md:text-8xl lg:text-[7rem]">
+                        <span className="accent-rule" aria-hidden="true" />
+                        <p className="public-kicker text-aqua">Himpunan Mahasiswa Informatika</p>
+                        <h1 className="text-gradient-volt font-editorial text-6xl leading-[0.92] font-semibold md:text-8xl lg:text-[7rem]">
                             {profileName}
                         </h1>
                         <p className="max-w-2xl text-base leading-8 text-white/95 md:text-lg">
                             {tagline}
                         </p>
                         {cabinetLine ? (
-                            <p className="text-sm uppercase tracking-[0.25em] text-white/85">
+                            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-flare">
                                 {cabinetLine}
                             </p>
                         ) : null}
                     </div>
 
                     <div className="mt-16 flex flex-wrap items-end justify-between gap-6" data-reveal>
-                        <div className="max-w-xl rounded-2xl border border-white/12 bg-black/28 px-5 py-4 backdrop-blur-sm">
+                        <div className="max-w-xl rounded-2xl border border-white/15 bg-ink-deep/45 px-5 py-4 backdrop-blur-sm transition duration-500 hover:border-aqua/40 hover:bg-ink-deep/60">
                             <p className="text-sm leading-7 text-white/92">
                                 {siteSettings?.site_description || organizationProfile?.description || "Ruang digital resmi HIMASTI untuk publikasi kegiatan, program kerja, dokumentasi, dan informasi organisasi."}
                             </p>
@@ -132,7 +147,7 @@ export default function LandingPage() {
                             <button
                                 type="button"
                                 onClick={() => setActiveSlide((activeSlide - 1 + heroSlides.length) % heroSlides.length)}
-                                className="inline-flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none"
+                                className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition duration-300 hover:-translate-x-0.5 hover:border-aqua hover:bg-volt/40 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep focus-visible:outline-none"
                                 aria-label="Slide sebelumnya"
                             >
                                 <ChevronLeft className="size-4" />
@@ -140,7 +155,7 @@ export default function LandingPage() {
                             <button
                                 type="button"
                                 onClick={() => setActiveSlide((activeSlide + 1) % heroSlides.length)}
-                                className="inline-flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none"
+                                className="inline-flex size-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition duration-300 hover:translate-x-0.5 hover:border-aqua hover:bg-volt/40 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep focus-visible:outline-none"
                                 aria-label="Slide berikutnya"
                             >
                                 <ChevronRight className="size-4" />
@@ -155,7 +170,7 @@ export default function LandingPage() {
                                 type="button"
                                 aria-label={`Pilih slide ${index + 1}`}
                                 onClick={() => setActiveSlide(index)}
-                                className={`h-1.5 transition ${index === activeSlide ? "w-10 bg-white" : "w-4 bg-white/35"}`}
+                                className={`h-1.5 rounded-full transition-all duration-500 ${index === activeSlide ? "w-12 bg-linear-to-r from-volt to-aqua" : "w-4 bg-white/35 hover:bg-white/60"}`}
                             />
                         ))}
                     </div>
@@ -165,13 +180,14 @@ export default function LandingPage() {
             <section className="public-section bg-white">
                 <div className="public-container grid gap-14 lg:grid-cols-[0.92fr_1.08fr]">
                     <div data-reveal>
-                        <p className="public-kicker">Arah Organisasi</p>
-                        <h2 className="mt-4 font-editorial text-5xl leading-none font-semibold text-black md:text-7xl">
+                        <span className="accent-rule" aria-hidden="true" />
+                        <p className="public-kicker mt-4">Arah Organisasi</p>
+                        <h2 className="mt-4 font-editorial text-5xl leading-none font-semibold text-ink md:text-7xl">
                             Visi &amp; Misi
                         </h2>
                     </div>
                     <div className="grid gap-10">
-                        <blockquote className="border-l border-slate-300 pl-6 font-editorial text-3xl leading-tight text-[#1c2032] md:text-5xl" data-reveal>
+                        <blockquote className="border-l-4 border-volt pl-6 font-editorial text-3xl leading-tight text-ink md:text-5xl" data-reveal>
                             {organizationProfile?.vision || "Membangun ruang tumbuh yang relevan, kolaboratif, dan berdampak bagi mahasiswa Informatika."}
                         </blockquote>
                         <ol className="grid gap-5" data-reveal>
@@ -182,8 +198,8 @@ export default function LandingPage() {
                                       "Mendorong program kerja yang terukur, terbuka, dan relevan.",
                                       "Menghadirkan karya dan kegiatan yang berdampak bagi lingkungan sekitar.",
                                   ]).map((item, index) => (
-                                <li key={`${item}-${index}`} className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-slate-200 pt-4">
-                                    <span className="font-editorial text-3xl leading-none text-[#1c2032]">
+                                <li key={`${item}-${index}`} className="group grid grid-cols-[2.5rem_1fr] gap-4 border-t border-line pt-4 transition duration-300 hover:border-volt">
+                                    <span className="font-editorial text-3xl leading-none text-volt-deep transition duration-300 group-hover:text-volt">
                                         {String(index + 1).padStart(2, "0")}
                                     </span>
                                     <p className="text-sm leading-7 text-slate-600 md:text-base">{item}</p>
@@ -194,7 +210,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="public-section bg-[#f6f6f2]">
+            <section className="public-section bg-mist">
                 <div className="public-container space-y-10">
                     <div className="flex flex-wrap items-end justify-between gap-6">
                         <SectionHeading
@@ -221,10 +237,10 @@ export default function LandingPage() {
                             <div className="grid gap-8 self-start">
                                 {secondaryNews.length ? (
                                     secondaryNews.map((item) => (
-                                        <div key={item.id} className="border-t border-slate-200 pt-6" data-reveal>
-                                            <Link href={route("public.news.show", item.slug)} className="block space-y-2 focus-visible:ring-2 focus-visible:ring-[#1c2032] focus-visible:ring-offset-2 focus-visible:outline-none">
+                                        <div key={item.id} className="group border-t-2 border-line pt-6 transition duration-300 hover:border-volt" data-reveal>
+                                            <Link href={route("public.news.show", item.slug)} className="block space-y-2 focus-visible:ring-2 focus-visible:ring-volt focus-visible:ring-offset-2 focus-visible:outline-none">
                                                 <p className="public-kicker">{formatDate(item.published_at)}</p>
-                                                <h3 className="font-editorial text-3xl leading-tight font-semibold text-[#1c2032]">
+                                                <h3 className="font-editorial text-3xl leading-tight font-semibold text-ink transition duration-300 group-hover:text-volt-deep">
                                                     {item.title}
                                                 </h3>
                                                 <p className="text-sm leading-7 text-slate-600">
@@ -287,7 +303,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="public-section bg-[#f7f8fb]">
+            <section className="public-section bg-mist-deep">
                 <div className="public-container space-y-10">
                     <SectionHeading
                         kicker="Struktur"
@@ -361,7 +377,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="public-section bg-[#f6f6f2]">
+            <section className="public-section bg-mist">
                 <div className="public-container space-y-10">
                     <div className="flex flex-wrap items-end justify-between gap-6">
                         <SectionHeading
@@ -387,21 +403,21 @@ export default function LandingPage() {
                                     <Link
                                         key={item.id}
                                         href={route("public.documentation.show", item.slug)}
-                                        className={`group block focus-visible:ring-2 focus-visible:ring-[#1c2032] focus-visible:ring-offset-2 focus-visible:outline-none ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+                                        className={`group hover-lift block focus-visible:ring-2 focus-visible:ring-volt focus-visible:ring-offset-2 focus-visible:outline-none ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
                                         data-reveal
                                     >
                                         <ImageFallback
                                             src={coverImage}
                                             alt={item.title}
-                                            className="overflow-hidden bg-slate-100"
-                                            imgClassName={`w-full object-cover transition duration-500 group-hover:scale-[1.02] ${index === 0 ? "aspect-[16/11]" : "aspect-[4/5]"}`}
+                                            className="overflow-hidden bg-mist-deep"
+                                            imgClassName={`w-full object-cover transition duration-700 ease-out group-hover:scale-105 ${index === 0 ? "aspect-[16/11]" : "aspect-[4/5]"}`}
                                             fallbackLabel={item.title}
                                         />
-                                        <div className="space-y-2 bg-white px-1 pt-4">
+                                        <div className="space-y-2 px-1 pt-4">
                                             <p className="public-kicker">
                                                 {[formatDate(item.event_date), item.location].filter(Boolean).join(" · ")}
                                             </p>
-                                            <h3 className="font-editorial text-3xl leading-tight font-semibold text-[#1c2032]">
+                                            <h3 className="font-editorial text-3xl leading-tight font-semibold text-ink transition duration-300 group-hover:text-volt-deep">
                                                 {item.title}
                                             </h3>
                                         </div>
@@ -433,7 +449,7 @@ export default function LandingPage() {
                                     href={item.instagram_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group block focus-visible:ring-2 focus-visible:ring-[#1c2032] focus-visible:ring-offset-2 focus-visible:outline-none"
+                                    className="group hover-lift block focus-visible:ring-2 focus-visible:ring-volt focus-visible:ring-offset-2 focus-visible:outline-none"
                                     data-reveal
                                 >
                                     <ImageFallback
@@ -456,7 +472,7 @@ export default function LandingPage() {
             </section>
 
             {activeServices.length ? (
-                <section className="border-t border-slate-200 bg-white">
+                <section className="border-t border-line bg-white">
                     <div className="public-container flex flex-wrap gap-x-8 gap-y-4 py-8">
                         <p className="public-kicker w-full">Layanan Terkait</p>
                         {activeServices.map((service) => (

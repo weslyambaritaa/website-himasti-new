@@ -15,8 +15,9 @@ export default function PublicFooter() {
     const { publicIdentity, publicProfileMeta } = usePage().props;
 
     return (
-        <footer className="bg-ink text-white">
-            <div className="public-container grid gap-12 py-14 md:grid-cols-[1.4fr_0.8fr]">
+        <footer className="relative overflow-hidden bg-aurora text-white">
+            <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-volt via-aqua to-flare" />
+            <div className="public-container relative grid gap-12 py-14 md:grid-cols-[1.4fr_0.8fr]">
                 <div className="space-y-6" data-reveal>
                     <div className="flex items-start gap-5">
                         <ImageFallback
@@ -47,7 +48,7 @@ export default function PublicFooter() {
                                     href={publicIdentity.instagram_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="underline underline-offset-4 hover:text-white"
+                                    className="underline underline-offset-4 transition hover:text-aqua"
                                 >
                                     Instagram
                                 </a>
@@ -58,11 +59,11 @@ export default function PublicFooter() {
 
                 <div className="grid gap-8 sm:grid-cols-2" data-reveal>
                     <div>
-                        <p className="public-kicker text-slate-400">Navigasi Cepat</p>
+                        <p className="public-kicker text-aqua">Navigasi Cepat</p>
                         <ul className="mt-5 space-y-3">
                             {quickLinks.map((item) => (
                                 <li key={item.label}>
-                                    <Link href={item.href()} className="text-sm text-slate-200 transition hover:text-white">
+                                    <Link href={item.href()} className="link-underline text-sm text-slate-200 transition hover:text-white">
                                         {item.label}
                                     </Link>
                                 </li>
@@ -70,7 +71,7 @@ export default function PublicFooter() {
                         </ul>
                     </div>
                     <div>
-                        <p className="public-kicker text-slate-400">Informasi</p>
+                        <p className="public-kicker text-aqua">Informasi</p>
                         <p className="mt-5 text-sm leading-7 text-slate-300">
                             {publicIdentity?.footer_text ?? "(c) HIMASTI"}
                         </p>

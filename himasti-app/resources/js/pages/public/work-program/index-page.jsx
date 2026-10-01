@@ -38,9 +38,9 @@ export default function PublicWorkProgramIndexPage() {
         >
             <section className="public-section bg-white">
                 <div className="public-container space-y-10">
-                    <form onSubmit={submit} className="grid gap-4 border border-slate-200 bg-[#f7f8fb] p-5 md:grid-cols-3" data-reveal>
+                    <form onSubmit={submit} className="grid gap-4 border border-line bg-mist p-5 md:grid-cols-3" data-reveal>
                         <Select value={data.division_id || "all"} onValueChange={(value) => setData("division_id", value === "all" ? "" : value)}>
-                            <SelectTrigger className="rounded-none border-slate-300 bg-white">
+                            <SelectTrigger className="rounded-none border-line bg-white">
                                 <SelectValue placeholder="Semua divisi" />
                             </SelectTrigger>
                             <SelectContent>
@@ -53,7 +53,7 @@ export default function PublicWorkProgramIndexPage() {
                             </SelectContent>
                         </Select>
                         <Select value={data.year || "all"} onValueChange={(value) => setData("year", value === "all" ? "" : value)}>
-                            <SelectTrigger className="rounded-none border-slate-300 bg-white">
+                            <SelectTrigger className="rounded-none border-line bg-white">
                                 <SelectValue placeholder="Semua tahun" />
                             </SelectTrigger>
                             <SelectContent>
@@ -65,7 +65,7 @@ export default function PublicWorkProgramIndexPage() {
                                 ))}
                             </SelectContent>
                         </Select>
-                        <Button type="submit" className="rounded-none bg-[#1c2032] text-white hover:bg-[#262c43]">
+                        <Button type="submit" className="btn-volt rounded-none font-semibold">
                             Terapkan Filter
                         </Button>
                     </form>
